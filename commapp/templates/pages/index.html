@@ -1,0 +1,24 @@
+{% extends 'layout/based.html' %}
+{% block title %}{{title}}{% endblock  %}
+{% block content %}
+<div class="productpagediv">
+
+{% for c in category %}
+	<h1>{{c.name}}</h1>
+	
+	<h2>{{c.categories.subname}}</h2>
+		
+		{% if c.categories.all %}
+			
+			{% for sub in c.categories.all %}
+			<h1>{{sub.subname}}</h1>
+			{% endfor %}
+				
+		{% endif %}
+			
+		
+			
+{% endfor %}
+	
+</div>
+{% endblock  %}

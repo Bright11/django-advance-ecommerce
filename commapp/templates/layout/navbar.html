@@ -1,0 +1,65 @@
+{% load static %}
+<div class="navcontainer">
+	<nav class="mynav">
+	<ul class="mynavul">
+		<div class="logodiv">
+			<li class="logo">
+			<a href="/">
+				<img src="{% static 'logo/mylogo.jpg' %}" alt="" class="imglogo">
+			</a>
+		</li>
+		</div>
+		<div class="mylinksdiv">
+			<li>
+			<a href="/">Home</a>
+		</li>
+		<li>
+			<a href="#"id="drop">Categories</a>
+		</li>
+		<li>
+			<a href="/">Home</a>
+		</li>
+		<li>
+			<a href="{% url 'adminapp:adminaddcat' %}">Category Damin</a>
+		</li>
+		
+		</div>
+	</ul>
+	<div class="line"></div>
+	<ul id="dropdown" class="dropdown see dropdownstyle">
+		
+		
+		{% for c in category %}
+			<div class="category">
+				<div class="category_holder">
+					<h2>{{c.name}}</h2>
+					<small>({{c.categories.count}})</small>
+				</div>
+			
+			<div class="subcategory">
+			
+			{% if c.categories.all %}
+					
+					{% for sub in c.categories.all  %}
+						<li><a href="">{{sub.subname}}</a></li>
+					{% endfor %}
+						
+			{% endif %}
+				
+			</div>
+				</div>
+		{% endfor %}
+			
+	</ul>
+</nav>
+</div>
+<div class="clearboth"></div>
+<style>
+	/* drop down */
+	.see{
+		display: none;
+	}
+	.hidenow {
+		display: none;
+		}
+</style>
