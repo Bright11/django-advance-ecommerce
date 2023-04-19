@@ -1,0 +1,28 @@
+{% extends 'layout/based.html' %}
+{% block title %}
+  {{ details.name }}
+{% endblock %}
+{% block content %}
+  <div class="productdetailpage">
+	<div class="detailsitems">
+		<div class="detailsimg">
+			<img src="{{details.image.url}}" alt="" class="image">
+		</div>
+		<div class="detailsname">
+			<h1>{{details.name}}</h1>
+			
+			 <small>{{details.views}} viewed</small> 
+		
+			 <h2>${{details.price}}</h2>
+		
+			<a href="">Add to cart<i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+		</div>
+	</div>
+	<div class="linedetails" ></div>
+	<div class="detailsdescription">
+		<h1>Description</h1>
+		<p>{{details.description}}</p>
+	</div>
+  </div>
+
+{% endblock %}
