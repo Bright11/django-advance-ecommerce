@@ -9,3 +9,12 @@ class index(View):
         subcat=Subcategory.objects.filter(category__isnull=False).distinct()
         context={'title':'home','products':products,'subcat':subcat}
         return render(request,'pages/index.html',context)
+
+
+# getting products by categories
+
+class getcategory(View):
+    def get(self,request,category):
+        getbycategory=Product.objects.filter(category=category)
+        context={'product':getbycategory,'title':'Categories'}
+        return render(request,'pages/viewcategory.html',context)

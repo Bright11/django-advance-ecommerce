@@ -7,14 +7,9 @@
 	
 	{% comment %} the end of top slider {% endcomment %}
 	<div class="productsandcategories">
-		{% for c in subcat %}
-		<div class="productcatgory_row">
-			<h1>{{c.subname}}</h1>
-			<a href="{% url 'commapp:getcategory' c.id %}">View all</a>
-		</div>
-		
+	
 	<div class="products ">
-		{% for p in c.category.all %}
+		{% for p in product %}
 	<div class="productcontent">
 		
 		<img src="{{p.image.url}}" alt="" class="productimg">
@@ -34,8 +29,7 @@
 		
 	{% endfor %}
 	</div>
-		
-	{% endfor %}
+
 	</div>
 	
 	

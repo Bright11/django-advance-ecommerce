@@ -55,7 +55,7 @@
 			{% if c.categories.all %}
 					
 					{% for sub in c.categories.all  %}
-						<li><a href="">{{sub.subname}}</a></li>
+						<li><a href="{% url 'commapp:getcategory' sub.id %}">{{sub.subname}}</a></li>
 					{% endfor %}
 						
 			{% endif %}
