@@ -1,16 +1,114 @@
+:root {
+	--primary-color: #EB556E;
+	--font-family: 'Roboto', sans-serif;
+}
 .admincategorypage{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 0px auto;
+	max-width: 70vw;
 }
 .admincategorypage>form{
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
 }
-.admincategorypage>form>input{
+ ::placeholder {
+ 	color: #ccc;
+ 	/* or another color that you prefer */
+ }
+.admincategorypage>form>input,select{
 	padding: 10px;
 	outline: none;
 	margin-bottom: 10px;
 }
+.admincategorypage>form>button {
+	padding: 10px;
+	border: none;
+	margin-bottom: 10px;
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+	background-color: var(--primary-color);
+	cursor: pointer;
+}
+.displaycategory{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+		margin-top: 30px;
+}
+.admincategory{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 10px;
+
+}
+
+.admincatgorydatadiv{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 10px;
+	margin-top: 30px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.admincatgorydatadiv>h1{
+	font-size: 18px;
+	font-weight: 400;
+	text-transform: capitalize;
+}
+.admincatgorydatadiv>a{
+	padding: 10px;
+	background-color:var(--primary-color);
+	border-radius: 100%;
+	color: white;
+	visibility: hidden;
+}
+.admincatgorydatadiv:hover .deletecat{
+	visibility: visible;
+}
+
+/* registrationpage */
+.registrationpage{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40px;
+}
+
+.registrationpage>form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 50vw;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+	padding: 10px;
+}
+.registrationpage>form>input,select,textarea{
+	width: 90%;
+	padding: 8px;
+	outline: none;
+	margin: 10px 0px;
+}
+.registrationpage>form>button{
+	padding: 8px;
+	color: white;
+	margin:10px 0px;
+	background-color: var(--primary-color);
+	border: none;
+	cursor: pointer;
+	width: 90%;
+	font-size: 16px;
+	font-weight: 400;
+} 

@@ -5,17 +5,18 @@
 <div class="admincategorypage">
 	<form action="" method="post">
 	{% csrf_token %}
-	{{categoryform.name}}
+	{{subform.subname}}
+	{{subform.category_id}}
 	<button type="submit">Save</button>
 </form>
 <div class="displaycategory">
-	<h1 style="font-size:18px; text-decoration:underline;">Categories</h1>
+	<h1 style="font-size:18px; text-decoration:underline;">SubCategories</h1>
 	<div class="admincategory">
 		
-		{% for c in category %}
+		{% for subcat in subcategory %}
 			<div class="admincatgorydatadiv">
-				<h1>{{c.name}}</h1>
-				<a href=""  class="deletecat">x</a>
+				<h1>{{subcat.subname}}</h1>
+				<a href="" class="deletecat">x</a>
 			</div>
 
 		{% endfor %}

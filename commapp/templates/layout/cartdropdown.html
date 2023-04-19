@@ -1,0 +1,35 @@
+<div class="cartdropdown cartdropdownhide" id="cartdropdownhide">
+	<div class="dropcartitems">
+		<div class="dropaddmore">
+			<h1>add</h1>
+		</div>
+		<div class="cartdropimg">
+			{% load static %}
+			<img src="{% static 'logo/mylogo.jpg' %}" alt="" class="dropcartimg">
+		</div>
+		<div class="cartdropname">
+			<h1>Shoe</h1>
+		</div>
+	</div>
+</div>
+<style>
+	.cartdropdown{
+		position: fixed;
+		top: 10;
+		z-index: 99;
+		right: 0;
+	}
+	#cartdropdownhide{
+		display: none;
+	}
+	.dropcartitems{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		gap: 10px;
+	}
+	.cartdropimg>img{
+		width: 80px;
+	}
+</style>
+

@@ -6,4 +6,22 @@
 	</div>
 </footer>
 {% load static %}
+<script src="{% static 'jquery/jquery.js' %}"></script>
 <script src="{% static 'js/navbarjs.js' %}"></script>
+
+
+<script src="{% static 'js/oweljs/owl.carousel.min.js' %}"></script>
+<script>
+  $('.owl-carousel').owlCarousel({
+    margin:10,
+    loop:true,
+    autoplay:true,
+     responsive:{
+        0:{
+            items:1
+        },
+      
+    }
+})
+	
+</script>

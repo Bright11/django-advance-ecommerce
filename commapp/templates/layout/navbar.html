@@ -13,20 +13,34 @@
 			<li>
 			<a href="/">Home</a>
 		</li>
-		<li>
-			<a href="#"id="drop">Categories</a>
+		<li id="drop">
+			<a href="#">Categories</a>
 		</li>
 		<li>
-			<a href="/">Home</a>
+			<a href="{% url 'adminapp:addproduct' %}">addproduct</a>
 		</li>
 		<li>
 			<a href="{% url 'adminapp:adminaddcat' %}">Category Damin</a>
 		</li>
+		<li>
+			<a href="{% url 'adminapp:adminsubcats' %}">SubCategory Damin</a>
+		</li>
+		<li onclick="cartdrop()"><a href="#" >cart</a></li>
+		{% if user.is_authenticated %}
+			<li><a href="{% url 'adminapp:logoutuser' %}">Logout</a></li>
+
+			{% else %}
+			<li>
+			<a href="{% url 'adminapp:registeruser' %}">Sign-up</a>
+		</li>
+		{% endif %}
+			
+		
 		
 		</div>
 	</ul>
 	<div class="line"></div>
-	<ul id="dropdown" class="dropdown see dropdownstyle">
+	<ul id="dropdown" class="dropdown showdrop dropdownstyle">
 		
 		
 		{% for c in category %}
@@ -52,14 +66,16 @@
 			
 	</ul>
 </nav>
+{% include 'layout/cartdropdown.html' %}
 </div>
 <div class="clearboth"></div>
 <style>
 	/* drop down */
-	.see{
+	.showdrop{
 		display: none;
 	}
 	.hidenow {
 		display: none;
 		}
+	
 </style>

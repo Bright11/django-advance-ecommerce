@@ -1,0 +1,16 @@
+{% extends 'layout/based.html' %}
+{% block title %}{{title}}{% endblock  %}
+
+{% block content %}
+<div class="registrationpage">
+	<form action="" method="post">
+		{% csrf_token %}
+		<label for="">User name</label>
+		{{form.username}}
+		<label for="">Password</label>
+		{{form.password}}
+		<button>Login</button>
+		<small>Don't have an acount <a href="{% url 'adminapp:registeruser'%}">Register</a></small>
+	</form>
+</div>
+{% endblock  %}
