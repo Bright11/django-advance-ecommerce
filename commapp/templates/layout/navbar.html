@@ -16,7 +16,13 @@
 		<li id="drop">
 			<a href="#">Categories</a>
 		</li>
-		<li>
+		
+		<li><a href="{% url 'commapp:mycart' %}" >cart</a></li>
+		{% if user.is_authenticated %}
+		<li><a href="{% url 'commapp:mywishlist' %}" class="wishlistcountbar"><i class="fa fa-heart" style="font-size:18px;color:red"></i><span>({{getwishlist}})</span></a></li>
+		
+		{% if user.is_superuser %}
+			<li>
 			<a href="{% url 'adminapp:addproduct' %}">addproduct</a>
 		</li>
 		<li>
@@ -25,8 +31,8 @@
 		<li>
 			<a href="{% url 'adminapp:adminsubcats' %}">SubCategory Damin</a>
 		</li>
-		<li onclick="cartdrop()"><a href="#" >cart</a></li>
-		{% if user.is_authenticated %}
+		{% endif %}
+			
 			<li><a href="{% url 'adminapp:logoutuser' %}">Logout</a></li>
 
 			{% else %}

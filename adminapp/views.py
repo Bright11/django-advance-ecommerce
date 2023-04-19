@@ -42,14 +42,14 @@ class registeruser(View):
     def get(self,request):
         registerform=RegisterForm()
         context={'registerform':registerform,'title':'registration'}
-        return render(request,'pages/register.html',context)
+        return render(request,'pages/registeruser.html',context)
     def post(self,request):
         registerform=RegisterForm(request.POST)
         if registerform.is_valid():
             registerform.save()
             return redirect('adminapp:login')
         else:
-            return redirect('adminapp:register')
+            return redirect('adminapp:registeruser')
         
 
 # logout

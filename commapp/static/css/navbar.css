@@ -113,3 +113,10 @@ font-size: 13px;
 .subcategory>li>a:hover{
 	color: var(--primary-color);
 }
+
+.wishlistcountbar{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}

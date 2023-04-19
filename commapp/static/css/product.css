@@ -144,3 +144,42 @@ display: flex;
 	line-height: 20px;
 	
 }
+
+/* wishlistpage */
+
+.mywishlistpage{
+	max-width: 80vw;
+	margin: 20px auto;
+}
+.wishlistitems{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}
+
+.wishlistdata{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 10px;
+	border-bottom: 1px solid var(--primary-color);
+}
+.wishlistdata>img{
+	width: 100px;
+}
+
+.wishlistdata>h1{
+	font-size: 16px;
+	font-weight: normal;
+	font-family: var(--font-family);
+}
+.wishlistdata>a {
+	font-size: 18px;
+	padding: 10px;
+	border-radius: 100%;
+}
+.wishlistdata>.removewishlist:hover{
+	background-color: var(--primary-color);
+	color: white;
+	
+}

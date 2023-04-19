@@ -36,6 +36,6 @@ class Cart(models.Model):
 
 class Wishlist(models.Model):
       product_id=models.ForeignKey(Product,related_name='products',on_delete=models.CASCADE)
-      user=models.ForeignKey(User,on_delete=models.CASCADE)
+      user=models.ForeignKey(User,related_name='user', on_delete=models.CASCADE)
       def __str__(self):
             return self.product_id.name

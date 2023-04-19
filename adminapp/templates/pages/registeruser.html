@@ -5,15 +5,18 @@
 <div class="registrationpage">
 	<form action="" method="post">
 		{% csrf_token %}
-		<label for="">User name</label>
-		{{registerform.username}}
-		<label for="">Email</label>
-		{{registerform.email}}
-		<label for="">Password</label>
-		{{registerform.password1}}
-		<label for="">Confirm password</label>
-		{{registerform.password2}}
+		{{registerform}}
 		<button>Register</button>
+		{% if registerform.errors or form.non_field_errors %}
+				<div class="form_error">
+					
+					{% for field in form %}
+						{{field.errors}}
+					{% endfor %}
+					{{registerform.non_field_errors}}
+						
+				</div>
+			{% endif %}
 		<small>Have an acount <a href="{% url 'adminapp:login'%}">Login</a></small>
 	</form>
 </div>

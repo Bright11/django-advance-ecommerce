@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.views import View
-from adminapp .models import Category,Product,Subcategory,Wishlist
+from adminapp .models import Category,Product,Subcategory,Wishlist,Cart
 # Create your views here.
 
 class index(View):
@@ -51,5 +51,28 @@ class wishlist(View):
                 return redirect('commapp:index')
         
             # if not authenticated
+        else:
+            return redirect('addminapp:login')
+        
+
+# wishlist data
+class mywishlist(View):
+    def get(self,request):
+        if request.user.is_authenticated:
+            getuserwishlist=Wishlist.objects.filter(user=request.user)
+            context={'getuserwishlist':getuserwishlist,'title':'My Wishlist'}
+            return render(request,'pages/mywishlist.html',context)
+        else:
+            return redirect('addminapp:login')
+        
+
+
+# items cart
+class mycart(View):
+    def get(self,request):
+        if request.user.is_authenticated:
+            mycart=Cart.objects.filter(user=request.user)
+            context={'mycart':mycart}
+            return render(request,'pages/mycart.html',context)
         else:
             return redirect('addminapp:login')
