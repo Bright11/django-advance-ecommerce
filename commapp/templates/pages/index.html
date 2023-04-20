@@ -4,12 +4,34 @@
 {% endblock %}
 {% block content %}
   <div class="productpagediv">
+	<h1 class="h1highlyviewed">highly viewed</h1>
+	<div class="highlyviewed">
+		
+		{% for h in items %}
+		<div class="productcontent">
+		<img src="{{h.image.url}}" alt="" class="productimg">
+		<div class="pricename">
+			<h1>{{h.name}}</h1>
+			<h2>price ${{h.price}}</h2>
+		</div>
+		<div class="wishlistdiv">
+				<div class="wishlist__holder">
+					<a href="{% url 'commapp:addtocart' h.id %}"><i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+					<a href="{% url 'commapp:details' h.id %}"><i class='fa fa-eye-slash' style='font-size:28px;color:lightgray'></i></a>
+				<a href="{% url 'commapp:wishlist' h.id %}"><i class="fa fa-heart" style="font-size:28px;color:red"></i></a>
+				</div>
+		</div>
 	
+	</div>
+		{% endfor %}
+			
+	</div>
+	{% comment %} the end of highly viewed {% endcomment %}
 	{% comment %} the end of top slider {% endcomment %}
 	<div class="productsandcategories">
 		{% for c in subcat %}
 		<div class="productcatgory_row">
-			<h1>{{c.subname}}</h1>
+			<h1 class="h1highlyviewed">{{c.subname}}</h1>
 			<a href="{% url 'commapp:getcategory' c.id %}">View all</a>
 		</div>
 		
@@ -24,7 +46,7 @@
 		</div>
 		<div class="wishlistdiv">
 				<div class="wishlist__holder">
-					<a href=""><i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+					<a href="{% url 'commapp:addtocart' p.id %}"><i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
 					<a href="{% url 'commapp:details' p.id %}"><i class='fa fa-eye-slash' style='font-size:28px;color:lightgray'></i></a>
 				<a href="{% url 'commapp:wishlist' p.id %}"><i class="fa fa-heart" style="font-size:28px;color:red"></i></a>
 				</div>

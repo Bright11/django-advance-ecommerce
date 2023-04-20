@@ -17,8 +17,9 @@
 			<a href="#">Categories</a>
 		</li>
 		
-		<li><a href="{% url 'commapp:mycart' %}" >cart</a></li>
+		
 		{% if user.is_authenticated %}
+		<li><a class="cartcountbar" href="{% url 'commapp:mycart' %}" >cart <span>({{countcart}})</span></a></li>
 		<li><a href="{% url 'commapp:mywishlist' %}" class="wishlistcountbar"><i class="fa fa-heart" style="font-size:18px;color:red"></i><span>({{getwishlist}})</span></a></li>
 		
 		{% if user.is_superuser %}

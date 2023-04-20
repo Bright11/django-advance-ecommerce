@@ -11,9 +11,12 @@
 		{% for cart in mycart %}
 			<div class="wishlistdata">
 				<img src="{{cart.product_id.image.url}}" alt="">
+				<h1>{{cart.product_id.name}}</h1>
 				<h1>${{cart.product_id.price}}</h1>
-				<a href="" class="removewishlist">x</a>
+				<h1>{{cart.tottalprice}}</h1>
 				<a href=""><i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+				<a href="{% url 'commapp:deletecart' cart.id %}" class="removewishlist">x</a>
+				
 			</div>
 		{% endfor %}
 			

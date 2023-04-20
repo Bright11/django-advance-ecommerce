@@ -14,8 +14,8 @@
 			 <small>{{details.views}} viewed</small> 
 		
 			 <h2>${{details.price}}</h2>
-		
-			<a href="">Add to cart<i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+			<a style="margin-bottom: 10px;" href="{% url 'commapp:wishlist' details.id %}">Add to Wishlist<i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+			<a href="{% url 'commapp:addtocart' details.id %}">Add to cart<i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
 		</div>
 	</div>
 	<div class="linedetails" ></div>

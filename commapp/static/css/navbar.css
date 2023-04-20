@@ -113,7 +113,14 @@ font-size: 13px;
 .subcategory>li>a:hover{
 	color: var(--primary-color);
 }
-
+/* cart count */
+.cartcountbar{
+	display: flex;
+		align-items: center;
+		
+		gap: 8px;
+}
+/* wishliset */
 .wishlistcountbar{
 	display: flex;
 	align-items: center;

@@ -16,7 +16,7 @@ class Subcategory(models.Model):
 # product models
 class Product(models.Model):
       name=models.CharField(max_length=255)
-      price=models.CharField(max_length=200)
+      price=models.PositiveIntegerField()
       category=models.ForeignKey(Subcategory,related_name='category',on_delete=models.CASCADE)
       keywords=models.TextField()
       description=models.TextField()
@@ -27,9 +27,9 @@ class Product(models.Model):
 
 class Cart(models.Model):
       product_id=models.ForeignKey(Product,related_name='product',on_delete=models.CASCADE)
-      tottalprice=models.CharField(max_length=255)
+      tottalprice=models.PositiveIntegerField()
       qty=models.IntegerField(default=1)
-      user=models.ForeignKey(User,on_delete=models.CASCADE)
+      users=models.ForeignKey(User,related_name='users', on_delete=models.CASCADE)
       def __str__(self):
             return self.product_id.name
 

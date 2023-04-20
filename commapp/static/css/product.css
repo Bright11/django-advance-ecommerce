@@ -2,7 +2,9 @@
 	--primary-color: #EB556E;
 	--font-family: 'Roboto', sans-serif;
 }
-
+.highlyviewed{
+	margin-bottom: 20px;
+}
 
 .productpagediv{
 	max-width: 80vw;
@@ -75,7 +77,10 @@ display: flex;
 .productcontent:hover .wishlistdiv{
 	display: block;
 }
-
+.h1highlyviewed{
+	font-size: 16px;
+	font-weight: 400;
+}
 
 /* product details */
 .productdetailpage{
@@ -182,4 +187,13 @@ display: flex;
 	background-color: var(--primary-color);
 	color: white;
 	
+}
+
+/* highlyviewed */
+
+.highlyviewed{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
 }
