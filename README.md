@@ -1,3 +1,6 @@
+## project image
+![home](https://github.com/Bright11/django-advance-ecommerce/assets/34070274/31d8f256-3efb-44de-8f6c-15217d4eb764)
+
 ## Project description
 This ecommerece project is build using python django.
 ![Alt text](/static/images/homeecommerce.png "site image")
