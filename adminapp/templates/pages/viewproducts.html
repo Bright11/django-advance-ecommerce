@@ -1,0 +1,31 @@
+{% extends 'layout/based.html' %}
+
+{% block title %}
+  View products
+{% endblock  %}
+  
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in products%}
+    <tr>
+      <th scope="row">{{p.name}}</th>
+      <td><img height="100" width="100" src="{{p.image.url}}" alt="{{p.name}}"></td>
+      <td>${{p.price}}</td>
+      <td><a href="{% url 'adminapp:updateproduct' p.id %}">Update</a></td>
+       <td><a href="{% url 'adminapp:deletepro' p.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

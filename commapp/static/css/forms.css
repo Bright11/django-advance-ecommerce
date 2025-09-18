@@ -15,10 +15,32 @@
 	flex-direction: column;
 	padding: 10px;
 }
+form{
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	max-width: 400px;
+	margin: 10px auto;
+}
  ::placeholder {
  	color: #ccc;
  	/* or another color that you prefer */
  }
+ form>input,select{
+	padding: 10px;
+	outline: none;
+	margin-bottom: 10px;
+}
+form>button {
+	padding: 10px;
+	border: none;
+	margin-bottom: 10px;
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+	background-color: var(--primary-color);
+	cursor: pointer;
+}
 .admincategorypage>form>input,select{
 	padding: 10px;
 	outline: none;

@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.views import View
 # Create your views here.
 from .forms import CategoryForm,SubcatsForm,RegisterForm,ProductForm
+from . models import *
+from django.shortcuts import render, get_object_or_404, redirect
+
 
 from django.contrib.auth import logout
 class adminaddcat(View):
@@ -18,10 +21,34 @@ class adminaddcat(View):
         else:
               return redirect('adminapp:adminaddcat')
         
+class viewcategory(View):
+    def get(self,request):
+        category=Category.objects.all()
+        context={"category":category}
+        return render(request,'pages/adminviewcategory.html',context)
 
-
+class updatecategory(View):
+    def get(self,request,pk):
+        get_cart_by_id=get_object_or_404(Category,pk=pk)
+        form=CategoryForm(instance=get_cart_by_id)
+        context={"form":form,"get_cart_by_id":get_cart_by_id}
+        return render(request,'pages/update_category.html',context)
+    def post(self,request,pk):
+        
+        get_cart_by_id=get_object_or_404(Category,pk=pk)
+        form=CategoryForm(request.POST,instance=get_cart_by_id)
+        if form.is_valid():
+            form.save()
+            return redirect("adminapp:viewcategory")
+        else:
+            return redirect(request.META.get('HTTP_REFERER','/'))
+        
+class deletecategory(View):
+    def get(self,request,pk):
+        get_object_or_404(Category,pk=pk).delete()
+        return redirect(request.META.get('HTTP_REFERER','/'))
+    
 # adding subcategory into database
-
 class adminsubcats(View):
     def get(self,request):
         subform=SubcatsForm()
@@ -36,7 +63,35 @@ class adminsubcats(View):
         else:
             return redirect('adminapp:adminsubcats')
         
-
+class viewsubcategory(View):
+    def get(self,request):
+        getsubcategory=Subcategory.objects.all()
+        context={"subcat":getsubcategory}
+        return render(request,'pages/viewsubcategory.html',context)
+    
+class updatesubcategory(View):
+    def get(self,request,pk):
+        subcategory=get_object_or_404(Subcategory,pk=pk)
+        form=SubcatsForm(instance=subcategory)
+        context={"form":form,'subcategory':subcategory}
+        return render(request,'pages/update_subcategory.html',context)
+    
+    def post(self,request,pk):
+        subcategory=get_object_or_404(Subcategory,pk=pk)
+        form=SubcatsForm(request.POST,instance=subcategory)
+        if form.is_valid():
+            form.save()
+            return redirect('adminapp:viewsubcategory')
+        else:
+             return redirect(request.META.get('HTTP_REFERER','/'))
+         
+class deletesubcategory(View):
+    def get(self,request,pk):
+        get_object_or_404(Subcategory,pk=pk).delete()
+        return redirect(request.META.get('HTTP_REFERER','/'))
+    
+    
+        
 # registration forms
 class registeruser(View):
     def get(self,request):
@@ -60,34 +115,9 @@ def logoutuser(request):
 
 
 
-# adding product
-class addproduct(View):
-    def get(self,request):
-        proform=ProductForm()
-        context={'title':'Add product','proform':proform}
-        return render(request,'pages/addproduct.html',context)
-
-    def post(self,request):
-        proforms=ProductForm(request.POST,request.FILES)
-        if proforms.is_valid():
-            proforms.save()
-            return redirect('adminapp:addproduct')
-        else:
-            print('not saved')
-            return redirect('adminapp:addproduct')
 
 
 
 
-# upload product
-
-# def uploadproduct(request):
-#     if request.method =="POST":
-#         producform=ProductForm(request.POST, request.FILES)
-#         if producform.is_valid():
-#             producform.save()
-#             return redirect('adminapp:addproduct')
-#         else:
-#             return redirect('adminapp:addproduct')
 
     

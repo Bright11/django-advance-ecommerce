@@ -1,0 +1,15 @@
+{% extends 'layout/based.html' %}
+
+{% block title %}
+  Update
+{% endblock  %}
+  
+{% block content %}
+
+<form action="{% url 'adminapp:update_category' get_cart_by_id.id %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+{{form.as_div }}
+   <button type="submit">Update</button>
+</form>
+
+{% endblock %}

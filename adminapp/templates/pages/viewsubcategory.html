@@ -1,0 +1,27 @@
+{% extends 'layout/based.html' %}
+
+{% block title %}
+  View products
+{% endblock  %}
+  
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for subcat in subcat %}
+    <tr>
+      <th scope="row">{{subcat.subname}}</th>
+      <td><a href="{% url 'adminapp:updatesubcategory' subcat.id %}">Update</a></td>
+       <td><a href="{% url 'adminapp:deletesubcategory' subcat.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+import os 
+from django.conf import settings
+
 # Create your models here.
 class Category(models.Model):
     name=models.CharField(max_length=200,unique=True)
@@ -22,6 +25,19 @@ class Product(models.Model):
       description=models.TextField()
       image=models.ImageField(upload_to='image')
       views=models.IntegerField(default=0)
+      
+      # delete image when image is changed
+      def save(self, *args, **kwargs):
+        try:
+            old_item = Product.objects.get(pk=self.pk)
+            if old_item.image and old_item.image != self.image:
+                old_image_path = old_item.image.path
+                if os.path.exists(old_image_path):
+                    os.remove(old_image_path)
+        except Product.DoesNotExist:
+            pass  # this is a new object, so no old image
+        super().save(*args, **kwargs)
+      
       def __str__(self):
             return self.name 
 
