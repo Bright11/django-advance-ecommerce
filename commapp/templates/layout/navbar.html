@@ -30,15 +30,15 @@
 			<a href="{% url 'adminapp:adminaddcat' %}">Category Damin</a>
 		</li>
 		<li>
-			<a href="{% url 'adminapp:adminsubcats' %}">SubCategory Damin</a>
+			<a href="{% url 'adminapp:viewsubcategory' %}">SubCategory Damin</a>
 		</li>
 		{% endif %}
 			
-			<li><a href="{% url 'adminapp:logoutuser' %}">Logout</a></li>
+			<li><a href="{% url 'authapp:logoutuser' %}">Logout</a></li>
 
 			{% else %}
 			<li>
-			<a href="{% url 'adminapp:registeruser' %}">Sign-up</a>
+			<a href="{% url 'authapp:registeruser' %}">Sign-up</a>
 		</li>
 		{% endif %}
 			

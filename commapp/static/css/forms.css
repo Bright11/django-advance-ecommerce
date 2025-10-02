@@ -8,7 +8,7 @@
 	align-items: center;
 	justify-content: center;
 	margin: 0px auto;
-	max-width: 70vw;
+	/* max-width: 70vw; */
 }
 .admincategorypage>form{
 	display: flex;

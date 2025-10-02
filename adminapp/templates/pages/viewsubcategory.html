@@ -5,7 +5,15 @@
 {% endblock  %}
   
 {% block content %}
-
+<div class="adminpage_Settings">
+  {% include 'adminlayout/adminsidebar.html' %}
+  <div class="admin_container">
+    <form action="" method="post">
+	{% csrf_token %}
+	{{subform.subname}}
+	{{subform.category_id}}
+	<button type="submit">Save</button>
+</form>
 <table class="table">
   <thead>
     <tr>
@@ -24,4 +32,6 @@
     {% endfor %}
   </tbody>
 </table>
+</div>
+</div>
 {% endblock %}

@@ -3,6 +3,8 @@ from django.views import View
 from adminapp .models import Category,Product,Subcategory,Wishlist,Cart
 # Create your views here.
 from django.db.models import Max
+from django.db.models import Sum
+
 class index(View):
     def get(self,request):
         products=Product.objects.all()
@@ -13,7 +15,6 @@ class index(View):
 
 
 # getting products by categories
-
 class getcategory(View):
     def get(self,request,category):
         getbycategory=Product.objects.filter(category=category)
@@ -106,13 +107,31 @@ class addtocart(View):
 class mycart(View):
     def get(self,request):
         if request.user.is_authenticated:
-            mycart=Cart.objects.filter(users=request.user)
-            context={'mycart':mycart}
+            user=request.user
+            mycart=Cart.objects.filter(users=user)
+            total=mycart.aggregate(tottalprice=Sum('tottalprice'))['tottalprice'] or 0
+            context={'mycart':mycart,'total':total}
             return render(request,'pages/mycart.html',context)
         else:
             return redirect('addminapp:login')
         
-
+class updatecart(View):
+    def post(self,request,pk):
+        if request.user.is_authenticated:
+            user=request.user
+            getcart=get_object_or_404(Cart,users=user,pk=pk)
+            qty=int(request.POST.get('qty'))
+            if qty >0:
+                print("is not 0")
+                getcart.qty=qty
+                getcart.tottalprice=getcart.product_id.price * qty
+                getcart.save()
+                return redirect('commapp:mycart')
+            else:
+                print("is 0")
+                return redirect('commapp:mycart')
+        else:
+            return redirect('adminapp:login')
 # DELETE CART
 
 class deletecart(View):

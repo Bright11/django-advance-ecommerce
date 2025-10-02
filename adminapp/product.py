@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views import View
 # Create your views here.
-from .forms import CategoryForm,SubcatsForm,RegisterForm,ProductForm
+from .forms import CategoryForm,SubcatsForm,ProductForm
 from . models import *
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -23,9 +23,12 @@ class addproduct(View):
 
 class getallproduct(View):
     def get(self,request):
+        if not request.user.is_superuser:
+            return redirect('commapp:index')
         products=Product.objects.all()
         context={"products":products}
         return render(request,"pages/viewproducts.html",context)
+    
 class updateproduct(View):
     def get(self,request,pk):
         singlepro=get_object_or_404(Product,pk=pk)

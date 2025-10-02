@@ -197,3 +197,46 @@ display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
+
+.checkout_total_div{
+	display: flex;
+	align-items: center;
+	gap:20px;
+	justify-content: flex-end;
+	margin-top: 20px;
+}
+.checkout_total_div>p{
+	font-size: 16px;
+	font-weight: 500;
+}
+.checkout_total_div>p a{
+	background-color: var(--primary-color);
+	padding: 10px 20px;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 14px;
+}
+.updatecartform{
+	display: flex !important;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+.updatecartform input{
+	width: 50px;
+	padding: 5px;
+	text-align: center;
+	border: 1px solid var(--primary-color);
+	border-radius: 5px;
+	font-size: 14px;
+}
+.updatecartform button{
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+}

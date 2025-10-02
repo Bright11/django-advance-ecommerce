@@ -5,11 +5,14 @@
 {% endblock  %}
   
 {% block content %}
-
+<div class="adminpage_Settings">
+  {% include 'adminlayout/adminsidebar.html' %}
+  <div class="admin_container">
 <form action="{% url 'adminapp:update_category' get_cart_by_id.id %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
 {{form.as_div }}
    <button type="submit">Update</button>
 </form>
-
+</div>
+</div>
 {% endblock %}

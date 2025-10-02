@@ -1,0 +1,31 @@
+.adminpage_Settings {
+   display: flex;
+   width: 90vw !important;
+    margin: 0px auto;
+}
+.adminsidebar{
+    width: 20%;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    
+}
+.admin_container{
+    width: 80%;
+    padding: 20px;
+}
+
+.adminsidebar ul{
+    list-style-type: none;
+    padding: 0;
+}
+.adminsidebar ul li{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+.adminsidebar ul li a{
+    color: white;
+    text-decoration: none;
+}

@@ -1,26 +1,36 @@
 {% extends 'layout/based.html' %}
-{% block title %}{{title}}{% endblock  %}
 
+{% block title %}
+  View products
+{% endblock  %}
+  
 {% block content %}
-<div class="admincategorypage">
-	<form action="" method="post">
+<div class="adminpage_Settings">
+  {% include 'adminlayout/adminsidebar.html' %}
+  <div class="admin_container">
+    <form action="" method="post">
 	{% csrf_token %}
 	{{categoryform.name}}
 	<button type="submit">Save</button>
 </form>
-<div class="displaycategory">
-	<h1 style="font-size:18px; text-decoration:underline;">Categories</h1>
-	<div class="admincategory">
-		
-		{% for c in category %}
-			<div class="admincatgorydatadiv">
-				<h1>{{c.name}}</h1>
-				<a href=""  class="deletecat">x</a>
-			</div>
-
-		{% endfor %}
-			
-	</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in category %}
+    <tr>
+      <th scope="row">{{c.name}}</th>
+      <td><a href="{% url 'adminapp:update_category' c.id %}">Update</a></td>
+       <td><a href="{% url 'adminapp:update_category' c.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 </div>
 </div>
-{% endblock  %}
+{% endblock %}

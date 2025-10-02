@@ -6,7 +6,7 @@
   <div class="productpagediv">
 	<h1 class="h1highlyviewed">highly viewed</h1>
 	<div class="highlyviewed">
-		
+		<!-- higly viewd products -->
 		{% for h in items %}
 		<div class="productcontent">
 		<img src="{{h.image.url}}" alt="" class="productimg">
@@ -26,8 +26,9 @@
 		{% endfor %}
 			
 	</div>
-	{% comment %} the end of highly viewed {% endcomment %}
-	{% comment %} the end of top slider {% endcomment %}
+	<!-- the end of highly viewed -->
+	 <!--  the end of top slider -->
+	
 	<div class="productsandcategories">
 		{% for c in subcat %}
 		<div class="productcatgory_row">
