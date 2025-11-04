@@ -1,0 +1,86 @@
+{% extends 'layout/based.html' %}
+
+{% block title %}{{title}}{% endblock  %}
+
+
+{% block content %}
+
+<div class="mywishlistpage checkoutpage">
+    <div class="shipping_addres">
+            <form action="" method="POST">
+              {% csrf_token %}
+                <h3>Shipping Address</h3>
+                
+                {% for m in messages %}
+                  <p>{{m}}</p>
+                {% endfor %}
+                  
+                <input type="number" name="number" placeholder="Phone number"
+                
+                {% if getaddress.phone %}
+                   value={{getaddress.phone}}
+                {% endif %}
+                  
+               >
+                 <input type="text" name="landmark"
+                 
+                 {% if getaddress.landmark  %}
+                  value={{getaddress.landmark}} 
+                 {% endif %}
+                  
+                 placeholder="Landmark">
+                <input type="text" name="address"  {% if getaddress.address %}
+                  value={{getaddress.address}}
+                {% endif %}>
+                <button>Save</button>
+            </form>
+<!-- <div id="paypal-button-container"></div> -->
+ <a href="{% url 'create_payment' %}">
+  <button>Pay with PayPal</button>
+</a>
+        </div>
+	<div class="wishlistitems checkout_table">
+		{% if mycart %}
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Price</th>
+       <th scope="col">Total Price</th>
+      <th scope="col" >Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for cart in mycart %}
+    <tr>
+      <th scope="row">{{cart.product_id.name}}</th>
+      <td><img height="100" width="100" src="{{cart.product_id.image.url}}" alt="{{cart.product_id.name}}"></td>
+      <td>${{cart.product_id.price}}</td>
+      <td>${{cart.tottalprice}}</td>
+      <td>
+     <form action="{% url 'commapp:updatecart' cart.id %}" class="updatecartform" method="POST">
+					{% csrf_token %}
+					<input type="number" name="qty" value="{{cart.qty}}">
+					<button type="submit">Update</button>
+				</form>
+     </td>
+       <td><a href="{% url 'commapp:deletecart' cart.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+			
+		<div class="checkout_total_div">
+			<p>Total Price: ${{total}}</p>	
+		<p><a href="">Proceed to checkout</a></p>
+		
+		</div>
+		{% else %}
+<p><a href="/">Your cart is empty</a></p>
+		{% endif %}
+	</div>
+</div>
+
+{% endblock  %}

@@ -9,7 +9,11 @@ app_name='authapp'
 
 urlpatterns = [
      path('logoutuser/',views.logoutuser,name="logoutuser"),
-    path('login/',auth_views.LoginView.as_view(template_name='pages/login.html',authentication_form=LoginForm),name="login"),
+    # path('login/',auth_views.LoginView.as_view(template_name='pages/login.html',authentication_form=LoginForm),name="login"),
+    path('login/',views.LoginView.as_view(),name='login'),
       path('registeruser/',views.registeruser.as_view(),name="registeruser"),
       path("deleteuser/", views.deleteview.as_view(), name='deleteuser')
 ]
+
+
+

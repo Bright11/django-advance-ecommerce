@@ -23,6 +23,32 @@
 		<h1>Description</h1>
 		<p>{{details.description}}</p>
 	</div>
+
+	
+	<h1>Related Products</h1>
+		<div class="products ">
+		{% for relatedpro in related_products %}
+	<div class="productcontent">
+		
+		<img src="{{relatedpro.image.url}}" alt="" class="productimg">
+		<div class="pricename">
+			<h1>{{relatedpro.name}}</h1>
+			<h2>price ${{relatedpro.price}}</h2>
+		</div>
+		<div class="wishlistdiv">
+				<div class="wishlist__holder">
+					<a href="{% url 'commapp:addtocart' relatedpro.id %}"><i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+					<a href="{% url 'commapp:details' relatedpro.id %}"><i class='fa fa-eye-slash' style='font-size:28px;color:lightgray'></i></a>
+				<a href="{% url 'commapp:wishlist' relatedpro.id %}"><i class="fa fa-heart" style="font-size:28px;color:red"></i></a>
+				</div>
+		</div>
+	
+	</div>
+		
+	{% endfor %}
+	</div>
+	
+		
   </div>
 
 {% endblock %}

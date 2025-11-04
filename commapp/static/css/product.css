@@ -1,9 +1,11 @@
 :root {
-	--primary-color: #EB556E;
+	--primary-color: #000004;;
 	--font-family: 'Roboto', sans-serif;
 }
 .highlyviewed{
 	margin-bottom: 20px;
+	background-color: var(--primary-color);
+	padding: 20px;
 }
 
 .productpagediv{
@@ -17,18 +19,26 @@
 	justify-content: space-between;
 	 margin-top: 40px;
 	flex-wrap: wrap;
+	background-color: white;
+	padding: 10px;
 }
 .productcatgory_row{
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: center;
-	margin-bottom: 40px;
+	margin-top: 40px;
+}
+.productcatgory_row a{
+	text-decoration: none;
+	background-color: var(--primary-color);
+	color: white;
+	padding: 8px;
 }
 
 .productcontent{
-	width: 200px;
-	height: 250px;
+	width: 250px;
+	height: 300px;
 	background-color: white;
 	align-items: center;
 	display: flex;
@@ -36,24 +46,44 @@
 	margin: 20px 2px;
 	position: relative;
 	cursor: pointer;
+	overflow: hidden;
 	
 }
 .productimg{
-	width: 100%;
+	width: 200px !important;
 	height: 200px;
 	object-fit: contain;
+	transition: width 0.5s ease-in-out, transform 0.5s ease-in-out;
+	
 }
-
+.productcontent:hover .productimg{
+	/* width: 100% !important; */
+	transform: scale(1.7);
+}
 .productcontent>.pricename{
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 	margin-bottom: 10px;
 }
-.productcontent>.pricename>h1,h2{
-	font-size: 16px;
-	font-weight: 400;
+.pricename h2{
+font-size: 16px;
+	font-weight: 300;
 	font-family: var(--font-family);
+	text-align: center;
+}
+.productcontent>.pricename>h1{
+	font-size: 16px;
+	font-weight: 300;
+	font-family: var(--font-family);
+	text-align: center;
+}
+.productcontent a{
+	width: 100%;
+	background-color: var(--primary-color);
+	color: white;
+	text-align: center;
+	text-decoration: none;
 }
 /* https: //bonik-react.vercel.app/market-1 */
 
@@ -61,8 +91,13 @@
 .wishlistdiv{
 	position: absolute;
 	margin: auto 0px;
-	width: 100%;
+	width: max-content;
+	background-color: var(--primary-color);
 	display: none;
+	justify-content: space-between;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+	left: 0;
 }
 
 .wishlist__holder{
@@ -70,13 +105,14 @@ display: flex;
 	justify-content: space-between;
 	padding: 0px 10px;
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
 	gap: 10px;
-	
 }
 .productcontent:hover .wishlistdiv{
-	display: block;
+	display: flex;
+	opacity: 6;
 }
+
 .h1highlyviewed{
 	font-size: 16px;
 	font-weight: 400;
@@ -218,11 +254,18 @@ display: flex;
 	font-size: 14px;
 }
 .updatecartform{
-	display: flex !important;
+	/* display: flex !important; */
 	align-items: center;
 	gap: 10px;
-	margin-bottom: 10px;
+	margin: 0px auto !important;
+	
+	padding: 0px 3px !important;
+	flex-direction: row !important;
+	width: 100% !important;
+	flex: content !important;
+
 }
+
 .updatecartform input{
 	width: 50px;
 	padding: 5px;
@@ -230,7 +273,9 @@ display: flex;
 	border: 1px solid var(--primary-color);
 	border-radius: 5px;
 	font-size: 14px;
+
 }
+
 .updatecartform button{
 	background-color: var(--primary-color);
 	color: white;
@@ -239,4 +284,34 @@ display: flex;
 	border-radius: 5px;
 	cursor: pointer;
 	font-size: 14px;
+}
+
+.checkoutpage{
+	flex: content;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap !important;
+}
+.checkout_table{
+	width: 60%;
+}
+.shipping_addres{
+	width: 40%;
+	max-width: 500px;
+}
+.shipping_addres>form>h3{
+	text-align: center;
+}
+.shipping_addres>form{
+	width: 100% !important;
+	gap: 6px;
+	display: flex;
+	flex-direction: column;
+	width: 100% !important;
+}
+.shipping_addres>form input,textarea{
+	width: 100% !important;
+	margin: 0px auto;
+	outline: none;
+	resize:none;
 }

@@ -9,4 +9,5 @@ urlpatterns = [
     path('adminapp/',include('adminapp.urls')),
     path('',include('commapp.urls')),
     path('auth/', include('authapp.urls')),
+    path('paypal/', include('paypalapp.urls')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

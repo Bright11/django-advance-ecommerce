@@ -4,12 +4,12 @@
 {% endblock %}
 {% block content %}
   <div class="productpagediv">
-	<h1 class="h1highlyviewed">highly viewed</h1>
+	<h1 class="h1highlyviewed">highly viewed products</h1>
 	<div class="highlyviewed">
 		<!-- higly viewd products -->
 		{% for h in items %}
 		<div class="productcontent">
-		<img src="{{h.image.url}}" alt="" class="productimg">
+		<img src="{{h.image.url}}" alt="{{h.name}}" class="productimg">
 		<div class="pricename">
 			<h1>{{h.name}}</h1>
 			<h2>price ${{h.price}}</h2>
@@ -21,7 +21,7 @@
 				<a href="{% url 'commapp:wishlist' h.id %}"><i class="fa fa-heart" style="font-size:28px;color:red"></i></a>
 				</div>
 		</div>
-	
+	<a href="{% url 'commapp:addtocart' h.id %}"><i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i>Add to cart</a>
 	</div>
 		{% endfor %}
 			
@@ -37,22 +37,22 @@
 		</div>
 		
 	<div class="products ">
-		{% for p in c.category.all %}
+		{% for p in c.category.all|slice:":4" %}
 	<div class="productcontent">
 		
-		<img src="{{p.image.url}}" alt="" class="productimg">
+		<img src="{{p.image.url}}" alt="{{p.name}}" class="productimg">
 		<div class="pricename">
 			<h1>{{p.name}}</h1>
 			<h2>price ${{p.price}}</h2>
 		</div>
 		<div class="wishlistdiv">
 				<div class="wishlist__holder">
-					<a href="{% url 'commapp:addtocart' p.id %}"><i class="fa fa-shopping-cart" style="font-size:28px;color:black"></i></a>
+					<a href="{% url 'commapp:addtocart' p.id %}"><i class="fa fa-shopping-cart" style="font-size:28px;color:white"></i></a>
 					<a href="{% url 'commapp:details' p.id %}"><i class='fa fa-eye-slash' style='font-size:28px;color:lightgray'></i></a>
 				<a href="{% url 'commapp:wishlist' p.id %}"><i class="fa fa-heart" style="font-size:28px;color:red"></i></a>
 				</div>
 		</div>
-	
+	<a href="{% url 'commapp:addtocart' p.id %}"><i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i>Add to cart</a>
 	</div>
 		
 	{% endfor %}

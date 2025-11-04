@@ -3,6 +3,8 @@ from authapp.forms import *
 from django.views import View
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout
+from django.contrib.auth import login
+from django.contrib.auth import authenticate
 # Create your views here.
 
 
@@ -33,8 +35,8 @@ class registeruser(View):
             print('form is valid')
             user = registerform.save(commit=False)
             user.email = registerform.cleaned_data.get('email').lower()
-            user.is_superuser = True
-            user.is_staff = True
+            # user.is_superuser = True
+            # user.is_staff = True
             user.save()
             # registerform.save()
             return redirect('authapp:login')
@@ -55,3 +57,33 @@ class deleteview(View):
         user = request.user
         user.delete()
         return redirect("authapp:index")
+    
+    
+    
+class LoginView(View):
+    def get(self, request):
+        loginform=LoginForm()
+        context={'form':loginform,'title':'login'}
+        return render(request, 'pages/login.html', context)
+    
+    def post(self, request):
+        loginform=LoginForm(request, data=request.POST)
+        if loginform.is_valid():
+            username=loginform.cleaned_data.get('username')
+            password=loginform.cleaned_data.get('password')
+            user=authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                if user.is_superuser:
+                    return redirect('adminapp:addproduct')
+                # elif user.is_staff:
+                #     return redirect('commapp:index')
+                # elif user.is_active:
+                #     return redirect('commapp:index')
+                
+                
+                return redirect('commapp:index')
+            else:
+                return redirect('authapp:login')
+        else:
+            return redirect('authapp:login')

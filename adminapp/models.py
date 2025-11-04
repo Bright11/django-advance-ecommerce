@@ -55,3 +55,44 @@ class Wishlist(models.Model):
       user=models.ForeignKey(User,related_name='user', on_delete=models.CASCADE)
       def __str__(self):
             return self.product_id.name
+
+
+
+class Address(models.Model):
+      address_id=models.CharField(max_length=200)
+      user=models.ForeignKey(User,related_name='users_address', on_delete=models.CASCADE)
+      address=models.TextField()
+      landmark=models.TextField(max_length=200,blank=True,null=True)
+      phone=models.CharField(max_length=15)
+      ordered_date=models.DateTimeField(auto_now_add=True)
+      status=models.BooleanField(default=False)
+      
+      def __str__(self):
+            return self.address_id
+
+
+
+class OrderedItems(models.Model):
+      address=models.ForeignKey(Address,related_name='user_address',on_delete=models.CASCADE)
+      product_id=models.ForeignKey(Product,related_name='user_products',on_delete=models.CASCADE)
+      price=models.PositiveIntegerField()
+      qty=models.IntegerField()
+      user=models.ForeignKey(User,related_name='users_order', on_delete=models.CASCADE)
+      def __str__(self):
+            return f"{self.product_id.name} ({self.qty})"
+      
+      def total_price(self):
+            return self.qty * self.price
+
+class PaymentRecord(models.Model):
+      # address=models.ForeignKey(Address,related_name='user_address',on_delete=models.CASCADE)
+      user=models.ForeignKey(User, related_name='users_payment', on_delete=models.CASCADE)
+      total_amount=models.CharField(max_length=100)
+      transaction_id=models.CharField(max_length=200)
+      paid=models.BooleanField(default=False)
+      currency=models.CharField(max_length=100)
+      description=models.CharField(max_length=200, blank=True,null=True)
+      email=models.CharField(max_length=200)
+      
+      def __str__(self):
+            return self.payment_id

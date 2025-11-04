@@ -1,0 +1,17 @@
+{% extends 'layout/based.html' %} 
+
+{% block content %}
+<div style="margin-bottom: 150px;"></div>
+<div class="" style="margin: 100px auto;">
+
+    <h2>Payment Successful 🎉</h2>
+<p><strong>Thank you, {{ full_name }}!</strong></p>
+<p>Transaction ID: {{ transaction_id }}</p>
+<p>Amount Paid: {{ amount }} {{ currency }}</p>
+<p>Email: {{ user_email }}</p>
+<p>Description: {{ description }}</p>
+</div>
+
+
+{% endblock content %}
+   
