@@ -37,6 +37,7 @@ class registeruser(View):
             user.email = registerform.cleaned_data.get('email').lower()
             # user.is_superuser = True
             # user.is_staff = True
+            
             user.save()
             # registerform.save()
             return redirect('authapp:login')
@@ -75,7 +76,7 @@ class LoginView(View):
             if user is not None:
                 login(request, user)
                 if user.is_superuser:
-                    return redirect('adminapp:addproduct')
+                    return redirect('adminapp:dashboard')
                 # elif user.is_staff:
                 #     return redirect('commapp:index')
                 # elif user.is_active:

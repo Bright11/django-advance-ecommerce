@@ -18,7 +18,7 @@ li{
 	text-decoration: none;
 	font-family: var(--font-family);
 	color: white !important;
-	font-size: 20px !important;
+	font-size: 16px !important;
 }
 .mynav{
 	display: flex;
@@ -26,12 +26,12 @@ li{
 	gap: 10px;
 		background-color: var(--primary-color);
 		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-		padding: 10px;
+		padding: 3px;
 		position: fixed;
 		width: 100%;
 		z-index: 99;
 		top: 0px;
-		height: 70px;
+		height: 60px;
 		
 }
 .navcontainer{
@@ -78,7 +78,7 @@ li{
 }
 .category_container{
 	position: absolute;
-	top: 57px;
+	top: 50px;
 	background-color: var(--primary-color);
 	width: 100%;
 	left: 0;

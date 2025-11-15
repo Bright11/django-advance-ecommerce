@@ -1,6 +1,12 @@
+
+    body{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #aeb2b6;
+}
+
 .adminpage_Settings {
    display: flex;
-   width: 90vw !important;
+   width: 100% !important;
     margin: 0px auto;
 }
 .adminsidebar{
@@ -28,4 +34,31 @@
 .adminsidebar ul li a{
     color: white;
     text-decoration: none;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: capitalize;
+}
+
+.count_content{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+.counts{
+    background-color: rgb(232, 228, 228);
+    width: 200px;
+    height: 100px;
+    box-shadow: 10px 10px 10px -20px;
+}
+.counts div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 6px;
+}
+.counts div h6{
+    font-size: 12px;
+}
+.counts p{
+    text-align: center;
 }

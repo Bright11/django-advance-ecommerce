@@ -7,6 +7,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import logout
 
 
+class Dashboard(View):
+    def get(self, request):
+        context={'title':'Dasboard'}
+        return render(request,'pages/dashboard.html',context)
+    
+    
 class adminaddcat(View):
     def get(self,request):
         if not request.user.is_superuser:
@@ -105,6 +111,11 @@ class deletesubcategory(View):
         
 
 
+class OrdersView(View):
+    def get(self, request):
+        orders=PaymentRecord.objects.all()
+        context={"oder":orders,'title':"Orders page"}
+        return render(request,'pages/orders.html', context)
 
 
 

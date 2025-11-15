@@ -16,7 +16,7 @@ class addproduct(View):
         proforms=ProductForm(request.POST,request.FILES)
         if proforms.is_valid():
             proforms.save()
-            return redirect('adminapp:addproduct')
+            return redirect('adminapp:viewproduct')
         else:
             print('not saved')
             return redirect('adminapp:addproduct')

@@ -37,7 +37,7 @@ def create_payment(request):
     if not getchartdata:
         return redirect("commapp:index")
     try:
-        address=Address.objects.filter(user=user).first()
+        Address.objects.filter(user=user).first()
     except Address.DoesNotExist:
         return redirect(request.META.get('HTTP_REFERER', '/'))
     return_url = request.build_absolute_uri(reverse('execute_payment'))

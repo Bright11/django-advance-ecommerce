@@ -2,6 +2,9 @@
 	--primary-color: #000004;;
 	--font-family: 'Roboto', sans-serif;
 }
+body{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .highlyviewed{
 	margin-bottom: 20px;
 	background-color: var(--primary-color);

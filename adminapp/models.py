@@ -20,6 +20,7 @@ class Subcategory(models.Model):
 class Product(models.Model):
       name=models.CharField(max_length=255)
       price=models.PositiveIntegerField()
+      bought_price=models.PositiveIntegerField(null=True,blank=True)
       category=models.ForeignKey(Subcategory,related_name='category',on_delete=models.CASCADE)
       keywords=models.TextField()
       description=models.TextField()
@@ -95,4 +96,4 @@ class PaymentRecord(models.Model):
       email=models.CharField(max_length=200)
       
       def __str__(self):
-            return self.payment_id
+            return self.user.username

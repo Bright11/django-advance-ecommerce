@@ -1,0 +1,82 @@
+{% extends 'layout/based.html' %}
+
+{% block title %}
+{{title}}
+{% endblock  %}
+  
+{% block content %}
+<div class="adminpage_Settings">
+  {% include 'adminlayout/adminsidebar.html' %}
+  <div class="admin_container ">
+    <div class="count_content">
+<div class="counts">
+  <div>
+    <i class="fa-brands fa-product-hunt"></i>
+     <h6>Number of Products</h6>
+  </div>
+  <p>  {{number_of_p}}</p>
+</div>
+<div class="counts">
+   <div> 
+   
+    <i class="fa-solid fa-user"></i>
+     <h6>Number of Users</h6>
+</div>
+   <p> {{users}}</p>
+</div>
+<div class="counts">
+   <div>
+    
+     <i class="fa-solid fa-dollar-sign"></i>
+      <h6>Total selling</h6>
+   </div>
+<p> ${{product_selling_total}}</p>   
+</div>
+    <div class="counts">
+    <div>
+        
+     <i class="fa-solid fa-dollar-sign"></i>
+     <h6>Total Amount Bought</h6>
+    </div>
+   <p> ${{product_bought_total}}</p>
+</div>
+<div class="counts"> 
+    <div>
+         
+         <i class="fa-solid fa-dollar-sign"></i>
+         <h6>Total Profit</h6>
+    </div>
+    <p> ${{profit}}</p>
+   </div>
+    </div>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+
+</div>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}

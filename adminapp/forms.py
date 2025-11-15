@@ -25,7 +25,7 @@ class SubcatsForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
 	class Meta:
 		model=Product
-		fields=('name','price','category','keywords','description','views','image')
+		fields=('name','price','bought_price','category','keywords','description','views','image')
 		
 		exclude=['views']
 		

@@ -25,14 +25,9 @@
 		
 		{% if user.is_superuser %}
 			<li>
-			<a href="{% url 'adminapp:addproduct' %}">addproduct</a>
+			<a href="{% url 'adminapp:dashboard' %}">Dashboard</a>
 		</li>
-		<li>
-			<a href="{% url 'adminapp:adminaddcat' %}">Category Damin</a>
-		</li>
-		<li>
-			<a href="{% url 'adminapp:viewsubcategory' %}">SubCategory Damin</a>
-		</li>
+		
 		{% endif %}
 			
 			<li><a href="{% url 'authapp:logoutuser' %}">Logout</a></li>

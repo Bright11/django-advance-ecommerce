@@ -1,12 +1,13 @@
 <div class="adminsidebar">
     <h2>Admin Panel</h2>
     <ul>
-        <li><a href="/" target="_blank" >Dashboard</a></li>
+         <li><a href="/" target="_blank" >Vist site</a></li>
+        <li><a href="{% url 'adminapp:dashboard'%}" >Dashboard</a></li>
         <li><a href="{% url 'adminapp:addproduct' %}">add Product</a></li>
         <li><a href="{% url 'adminapp:viewproduct' %}">View Product</a></li>
-        <li><a href="{% url 'adminapp:viewsubcategory'%}">Manage Subcategories</a></li>
+        <li><a href="{% url 'adminapp:viewsubcategory'%}"> Subcategories</a></li>
         <li><a href="{% url 'adminapp:adminaddcat'%}">Manage Category</a></li>
-        <li><a href="">Manage Orders</a></li>
+        <li><a href="{% url 'adminapp:orders' %}"> Orders</a></li>
         <li><a href="">Manage Users</a></li>
     </ul>
 </div>

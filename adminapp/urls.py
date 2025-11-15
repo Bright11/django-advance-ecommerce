@@ -18,5 +18,7 @@ urlpatterns = [
     path("viewsubcategory/",views.subcategory.as_view(), name='viewsubcategory'),
     path('updatesubcategory/<int:pk>/',views.updatesubcategory.as_view(), name='updatesubcategory'),
     path("deletesubcategory/<int:pk>/",views.deletesubcategory.as_view(), name="deletesubcategory"),
+    path("orders/",views.OrdersView.as_view(),name='orders'),
+    path("dashboard",views.Dashboard.as_view(), name='dashboard')
     # path("updatecategory/<int:pk/",views.updatecategory.as_view(), name='updatecategory')
 ]
